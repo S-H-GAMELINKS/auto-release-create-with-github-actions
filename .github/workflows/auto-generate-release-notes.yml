@@ -20,10 +20,9 @@ jobs:
         default_bump: "minor"
     - name: Publish release
       uses: "marvinpinto/action-automatic-releases@latest"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         automatic_release_tag: ${{ steps.tag_version.outputs.new_version }}
         title: Release ${{ steps.tag_version.outputs.new_varsion }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
         draft: false
         prerelease: false
