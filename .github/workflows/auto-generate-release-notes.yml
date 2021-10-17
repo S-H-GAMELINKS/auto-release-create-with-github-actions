@@ -15,7 +15,7 @@ jobs:
       - name: Set release version
         id: release_version
         run: |
-          echo ${ GITHUB_SHA }
+          echo $GITHUB_SHA
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
