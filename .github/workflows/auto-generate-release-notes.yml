@@ -17,8 +17,6 @@ jobs:
         run: |
           echo ${ GITHUB_SHA }
       - uses: "marvinpinto/action-automatic-releases@latest"
-        env: |
-          VERSION: 1.0.0
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: 'github.event.push.head.sha'
