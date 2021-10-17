@@ -12,13 +12,12 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - name: Set release version
-        id: release_version
-        run: |
-          echo ::set-output name=version::$GITHUB_SHA
-          echo $GITHUB_SHA
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ steps.release_version.outputs.version }}
-          prerelease: false
+    - name: Create an incremental release
+      uses: aurestic/incrementarl-create-release@master
+      with:
+        flag_branch: true
+        message: Bump version
+        prev_tag: 'v'
+        update_odoo_module_version: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
